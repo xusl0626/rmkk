@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>cn.huidao</groupId>
-	<artifactId>agtsys</artifactId>
+	<groupId>com.rmkk</groupId>
+	<artifactId>YZSQ</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -165,11 +165,19 @@
 			<version>1.26</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+
 	</dependencies>
-	
+
+
 	<!-- 配置tomcat -->
 	<build>
-		<finalName>agtsys</finalName>
+		<finalName>YZSQ</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -177,7 +185,7 @@
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>2.2</version>
 					<configuration>
-						<path>/agtsys</path>
+						<path>/YZSQ</path>
 						<uriEncoding>UTF-8</uriEncoding>
 					</configuration>
 				</plugin>

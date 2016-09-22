@@ -11,7 +11,7 @@
 		</commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/test" userId="root"
+			connectionURL="jdbc:mysql://localhost:3306/rmkk" userId="root"
 			password="123456">
 		</jdbcConnection>
 
@@ -22,7 +22,7 @@
 		</javaTypeResolver>
 
 		<!-- targetProject:生成实体类的位置 -->
-		<javaModelGenerator targetPackage="cn.huidao.entity"
+		<javaModelGenerator targetPackage="com.rmkk.entity"
 			targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
@@ -30,22 +30,22 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="cn.huidao.dao" 
+		<sqlMapGenerator targetPackage="com.rmkk.dao" 
 			targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="cn.huidao.dao" 
+			targetPackage="com.rmkk.dao" 
 			targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table tableName="as_user" domainObjectName="User"
+		<table tableName="user" domainObjectName="User"
 		enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableCountByExample="false" ></table>
-		<table tableName="as_role" domainObjectName="Role"
+		<table tableName="role" domainObjectName="Role"
 		enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableCountByExample="false" ></table>
 	</context>
 </generatorConfiguration>

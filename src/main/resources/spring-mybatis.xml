@@ -26,6 +26,6 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.agtsys.dao"></property>
+		<property name="basePackage" value="com.rmkk.dao"></property>
 	</bean>
 </beans>

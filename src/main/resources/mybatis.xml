@@ -4,6 +4,6 @@
 
 <configuration>
 	<typeAliases>
-		<package name="cn.agtsys.entity"/>
+		<package name="com.rmkk.entity"/>
 	</typeAliases>
 </configuration>
