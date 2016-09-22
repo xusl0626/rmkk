@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rmkk.dao.WorkMapper" >
+  <resultMap id="BaseResultMap" type="com.rmkk.entity.Work" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="agency_id" property="agencyId" jdbcType="INTEGER" />
+    <result column="create_userid" property="createUserid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="over_time" property="overTime" jdbcType="TIMESTAMP" />
+    <result column="init_file" property="initFile" jdbcType="VARCHAR" />
+    <result column="final_file" property="finalFile" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="review_userid" property="reviewUserid" jdbcType="INTEGER" />
+    <result column="is_important" property="isImportant" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.rmkk.entity.Work" extends="BaseResultMap" >
+    <result column="opinion" property="opinion" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, agency_id, create_userid, create_time, over_time, init_file, final_file, status, 
+    review_userid, is_important
+  </sql>
+  <sql id="Blob_Column_List" >
+    opinion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from work
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rmkk.entity.Work" >
+    insert into work (id, agency_id, create_userid, 
+      create_time, over_time, init_file, 
+      final_file, status, review_userid, 
+      is_important, opinion)
+    values (#{id,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{createUserid,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, #{initFile,jdbcType=VARCHAR}, 
+      #{finalFile,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{reviewUserid,jdbcType=INTEGER}, 
+      #{isImportant,jdbcType=BIT}, #{opinion,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rmkk.entity.Work" >
+    insert into work
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agencyId != null" >
+        agency_id,
+      </if>
+      <if test="createUserid != null" >
+        create_userid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="overTime != null" >
+        over_time,
+      </if>
+      <if test="initFile != null" >
+        init_file,
+      </if>
+      <if test="finalFile != null" >
+        final_file,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reviewUserid != null" >
+        review_userid,
+      </if>
+      <if test="isImportant != null" >
+        is_important,
+      </if>
+      <if test="opinion != null" >
+        opinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null" >
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserid != null" >
+        #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null" >
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initFile != null" >
+        #{initFile,jdbcType=VARCHAR},
+      </if>
+      <if test="finalFile != null" >
+        #{finalFile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reviewUserid != null" >
+        #{reviewUserid,jdbcType=INTEGER},
+      </if>
+      <if test="isImportant != null" >
+        #{isImportant,jdbcType=BIT},
+      </if>
+      <if test="opinion != null" >
+        #{opinion,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rmkk.entity.Work" >
+    update work
+    <set >
+      <if test="agencyId != null" >
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserid != null" >
+        create_userid = #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null" >
+        over_time = #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initFile != null" >
+        init_file = #{initFile,jdbcType=VARCHAR},
+      </if>
+      <if test="finalFile != null" >
+        final_file = #{finalFile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reviewUserid != null" >
+        review_userid = #{reviewUserid,jdbcType=INTEGER},
+      </if>
+      <if test="isImportant != null" >
+        is_important = #{isImportant,jdbcType=BIT},
+      </if>
+      <if test="opinion != null" >
+        opinion = #{opinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.rmkk.entity.Work" >
+    update work
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      create_userid = #{createUserid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      init_file = #{initFile,jdbcType=VARCHAR},
+      final_file = #{finalFile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      review_userid = #{reviewUserid,jdbcType=INTEGER},
+      is_important = #{isImportant,jdbcType=BIT},
+      opinion = #{opinion,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rmkk.entity.Work" >
+    update work
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      create_userid = #{createUserid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      init_file = #{initFile,jdbcType=VARCHAR},
+      final_file = #{finalFile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      review_userid = #{reviewUserid,jdbcType=INTEGER},
+      is_important = #{isImportant,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
