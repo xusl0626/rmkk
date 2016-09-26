@@ -37,7 +37,9 @@ public class UserController {
 			wo.setStatus("200");
 			wo.setMsg("登录成功");
 		}*/
-		return JSON.toJSONString(loger);
+		String result=JSON.toJSONString(loger);
+		System.out.println(result);
+		return result;
 	}
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)

@@ -45,7 +45,7 @@ $(function(){
 	    	console.log(data);
 	    	var data = eval('(' + data + ')');
 	    	
-	        alert(data.flag);  
+	        alert(data.id);  
 	    }    
 	});  
 	
