@@ -28,15 +28,24 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(HttpServletRequest request){
 		User user=new User();
-		user.setName(request.getParameter("user.name"));
+		user.setCode(request.getParameter("user.code"));
 		user.setPassword(request.getParameter("user.password"));
 		System.out.println(user);
 		Webobj wo=new Webobj();
-		int recode=userService.userLogin(user);
-		if(recode==1){
+		User loger=userService.userLogin(user);
+		/*if(recode==1){
 			wo.setStatus("200");
 			wo.setMsg("登录成功");
-		}
-		return JSON.toJSONString(wo);
+		}*/
+		return JSON.toJSONString(loger);
+	}
+	
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public String register(HttpServletRequest request){
+		User user=new User();
+		user.setName(request.getParameter("name"));
+		user.setCode(request.getParameter("code"));
+		user.setPassword(request.getParameter("pwd"));
+		return JSON.toJSONString(userService.userRegister(user));
 	}
 }

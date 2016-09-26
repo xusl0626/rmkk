@@ -42,22 +42,24 @@ $(function(){
 	        return true;
 	    },    
 	    success:function(data){  
+	    	console.log(data);
 	    	var data = eval('(' + data + ')');
+	    	
 	        alert(data.flag);  
 	    }    
 	});  
 	
-	/*注册
-	$('#registerInfo').form('submit', {    
-	    url:"",    
-	    onSubmit: function(){    
+	/*注册*/
+	$('#registerInfo').form({    
+	    url:"register",    
+	    /*onSubmit: function(){    
 	        // do some check    
 	        // return false to prevent submit;    
-	    },    
+	    },  */  
 	    success:function(data){    
 	        alert(data)    
 	    }    
-	});*/
+	});
 
 	$("#registerInfo").hide();
 });

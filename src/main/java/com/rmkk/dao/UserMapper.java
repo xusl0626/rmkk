@@ -11,6 +11,11 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer id);
     
+    /**
+     * 根据员工编号查找
+     * @param code
+     * @return
+     */
     User selectByCode(String code);
 
     int updateByPrimaryKeySelective(User record);

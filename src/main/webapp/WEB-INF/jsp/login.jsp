@@ -43,8 +43,8 @@
 		        <input class="easyui-validatebox" type="text" name="code" data-options="required:true" />   
 		    </div>  
 		    <div>   
-		        <label for="password">密码:</label>   
-		        <input class="easyui-validatebox" type="password" name="password" data-options="required:true" />   
+		        <label for="pwd">密码:</label>   
+		        <input class="easyui-validatebox" type="password" name="pwd" data-options="required:true" />   
 		    </div>
 			<div class="bottombut">
 				<input type="submit" value="提交">

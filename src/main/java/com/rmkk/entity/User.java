@@ -102,4 +102,12 @@ public class User {
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", roleId=" + roleId + ", name=" + name
+				+ ", password=" + password + ", code=" + code + ", email="
+				+ email + ", phone=" + phone + ", img=" + img + ", cerateDate="
+				+ cerateDate + ", departmentId=" + departmentId + "]";
+	}
 }

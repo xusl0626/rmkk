@@ -12,15 +12,25 @@ public class UserService implements IUserService {
 
 	@Resource
 	private UserMapper userMapper;
+	
 	@Override
-	public int userLogin(User user) {
-		// TODO Auto-generated method stub
+	public User userLogin(User user) {
 		User loginUser=userMapper.selectByCode(user.getCode());
-		int loginCount=0;
-		if(loginUser==null){
-			loginCount=userMapper.insertSelective(user);
+		return loginUser;
+	}
+
+	/**
+	 * 用户注册
+	 * 根据给定用户
+	 */
+	@Override
+	public User userRegister(User user) {
+		User loginUser=userMapper.selectByCode(user.getCode());
+		if(loginUser!=null){
+			userMapper.insertSelective(user);
+			return user;
 		}
-		return loginCount;
+		return null;
 	}
 
 }
