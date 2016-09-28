@@ -37,27 +37,34 @@ $(function(){
 	
 	/*登录*/
 	$('#loginInfo').form({    
-	    url:"login",    
+	    url:"tologin",    
 	    onSubmit: function(){    
 	        return true;
 	    },    
 	    success:function(data){  
 	    	console.log(data);
 	    	var data = eval('(' + data + ')');
-	    	
-	        alert(data.id);  
+	    	if(data==null){
+	    		alert("用户不存在");
+	    	}else{
+	        	location.href="login";
+	    	}
 	    }    
 	});  
 	
 	/*注册*/
 	$('#registerInfo').form({    
-	    url:"register",    
-	    /*onSubmit: function(){    
-	        // do some check    
-	        // return false to prevent submit;    
-	    },  */  
+	    url:"toregister",    
+	    onSubmit: function(){    
+	        return true;    
+	    },  
 	    success:function(data){    
-	        alert(data)    
+	        console.log(data) 
+	        if(data==null){
+	        	alert("用户重复");
+	        }else{
+	        	location.href="login";
+	        }
 	    }    
 	});
 

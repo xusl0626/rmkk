@@ -1,5 +1,7 @@
 package com.rmkk.controller;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,30 +26,47 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping(value="login")
+	public String login(){
+		return "index";
+	}
+	
+	@RequestMapping(value="exit")
+	public String exit(HttpServletRequest request){
+		request.getSession().removeAttribute("oper");
+		return "redirect:/index";
+	}
+	
 	@ResponseBody
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(HttpServletRequest request){
+	@RequestMapping(value="/tologin",method=RequestMethod.POST)
+	public String tologin(HttpServletRequest request){
 		User user=new User();
 		user.setCode(request.getParameter("user.code"));
 		user.setPassword(request.getParameter("user.password"));
 		System.out.println(user);
 		Webobj wo=new Webobj();
 		User loger=userService.userLogin(user);
-		/*if(recode==1){
-			wo.setStatus("200");
-			wo.setMsg("登录成功");
-		}*/
+		if(loger!=null){
+			request.getSession().setAttribute("oper", loger);
+		}
 		String result=JSON.toJSONString(loger);
 		System.out.println(result);
 		return result;
 	}
 	
-	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(HttpServletRequest request){
+	@ResponseBody
+	@RequestMapping(value="/toregister",method=RequestMethod.POST)
+	public String toregister(HttpServletRequest request){
 		User user=new User();
 		user.setName(request.getParameter("name"));
 		user.setCode(request.getParameter("code"));
 		user.setPassword(request.getParameter("pwd"));
-		return JSON.toJSONString(userService.userRegister(user));
+		user.setRoleId(1);
+		user.setCerateDate(new Date());
+		User returnUser=userService.userRegister(user);
+		if(returnUser!=null){
+			request.getSession().setAttribute("oper", returnUser);
+		}
+		return JSON.toJSONString(returnUser);
 	}
 }

@@ -13,7 +13,6 @@ public class UserService implements IUserService {
 	@Resource
 	private UserMapper userMapper;
 	
-	@Override
 	public User userLogin(User user) {
 		User loginUser=userMapper.selectByCode(user.getCode());
 		return loginUser;
@@ -23,10 +22,9 @@ public class UserService implements IUserService {
 	 * 用户注册
 	 * 根据给定用户
 	 */
-	@Override
 	public User userRegister(User user) {
 		User loginUser=userMapper.selectByCode(user.getCode());
-		if(loginUser!=null){
+		if(loginUser==null){
 			userMapper.insertSelective(user);
 			return user;
 		}
